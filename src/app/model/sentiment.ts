@@ -1,0 +1,1 @@
+export type Sentiment = "Positive" | "Neutral" | "Negative"

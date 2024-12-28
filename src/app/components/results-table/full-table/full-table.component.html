@@ -1,0 +1,23 @@
+<div>
+    <h1 class="text-4xl mb-12 text-center">Check the Sentiment of a Subreddit</h1>
+
+    <div class="flex items-start justify-center space-x-8 mb-8">
+        <div>
+            <app-input-field [value]="subreddit" (valueChange)="onSubredditChange($event)"
+                (inputChange)="onInputChange()" />
+
+            <div class="min-h-6  mt-1">
+                @if (errorMessage) {
+                <p class="text-red-500 text-center">{{ errorMessage }}</p>
+                }
+            </div>
+        </div>
+        <app-select-field [selectedOption]="sorting" (selectedOptionChange)="onSortingChange($event)" />
+    </div>
+
+    <div class="mb-4">
+        <app-table [posts]="posts" />
+    </div>
+</div>
+
+<div class="">

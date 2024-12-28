@@ -1,0 +1,15 @@
+<div class="">
+
+    <app-full-table [subreddit]="subreddit" [sorting]="sorting" [posts]="posts" [errorMessage]="errorMessage"
+        (subredditChange)="onSubredditChange($event)" (sortingChange)="onSortingChange($event)"
+        (inputChange)="onInputChange()" class="w-3/4">
+    </app-full-table>
+
+    <div class="flex justify-between px-16" style="height: 320px; overflow: hidden;">
+        <canvasjs-chart [options]="pieChartOptions" style="width: 300px; height: 300px;" />
+        @if(fallbackMessage) {
+        <p class="text-red-500 text-center font-bold">{{ fallbackMessage }}</p>
+        }
+    </div>
+
+</div>

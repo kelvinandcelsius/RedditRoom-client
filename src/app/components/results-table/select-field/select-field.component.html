@@ -1,0 +1,18 @@
+<div class="flex items-center space-x-2">
+
+    <label for="sort-by" class="text-gray-700 font-medium">
+        Sort by:
+    </label>
+
+    <select id="sort-by" [value]="selectedOption" (change)="onChange($event)"
+        class="px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 custom-hovered">
+
+        @for (option of postSortingOptions; track option.value) {
+        <option [value]="option.value">
+            {{option.label}}
+        </option>
+        }
+
+    </select>
+
+</div>

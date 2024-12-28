@@ -1,0 +1,37 @@
+<table class="min-w-full bg-white border border-gray-200">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="py-2 px-4 border-b border-gray-200 text-left w-1/2">Title</th>
+            <th class="py-2 px-4 border-b border-gray-200 text-center">Upvotes</th>
+            <th class="py-2 px-4 border-b border-gray-200 text-center">Comments</th>
+            <th class="py-2 px-4 border-b border-gray-200 text-center">Date</th>
+            <th class="py-2 px-4 border-b border-gray-200 text-center">Sentiment</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (post of posts; track $index) {
+        <tr key={index} class="hover:bg-gray-50">
+            <td class="py-2 px-4 border-b border-gray-200 text-left text-xs">{{post.title}}</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-xs">{{post.upvotes}}</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-xs">{{post.comments}}</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-xs">{{ post.date | date:
+                'dd/MMM/yyyy&#44;&nbsp;HH:mm'}}</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-xs">{{post.sentiment}}</td>
+        </tr>
+        }
+        @empty {
+        <tr class="hover:bg-gray-50">
+            <td class="py-2 px-4 border-b border-gray-200 text-left text-sm">no posts</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-sm">-</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-sm">-</td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-sm">{{formattedDate | date:
+                'dd/MMM/yyyy&#44;&nbsp;HH:mm'}}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200 text-center text-sm">None</td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>

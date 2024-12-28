@@ -1,59 +1,70 @@
-# RkiveaiClientAngular
+<h1>
+  Reddit Room
+</h1>
+<hr/>
+Reddit Room is a *work-in-progress* full-stack MERN application contained in 2 repositories:
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+- [rkiveai-client](https://github.com/kelvinandcelsius/rkiveai-client): frontend
+- [rkiveai-server](https://github.com/kelvinandcelsius/rkiveai-server): backend
 
-## Development server
+### what is it for?
 
-To start a local development server, run:
+Analyzing the sentiment of Reddit posts in a given subreddit. It allows users or moderators to select a subreddit and sorting option, and display the top 10 posts of this subreddit (according to the sorting option) in a table, where they can see the posts title, number of upvotes, number of comments, date of creation, and an AI analysis* of the post's sentiment: POSITIVE, NEGATIVE or NEUTRAL.
 
-```bash
-ng serve
-```
+*AI analysys is subject to sufficient quota / OpenAI tokens.
+In case there is insufficient quota, a fallback mechanism randomly generates a sentiment for each post so the app doesn't crash.
+The user will be informed, as a message will be rendered in the view: "OpenAI API quota exceeded. Sentiment is randomly generated."
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Installation and Setup
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Clone the repository:
 
 ```bash
-ng generate --help
+git clone https://github.com/kelvinandcelsius/rkiveai-client.git
+cd rkiveai-client
 ```
 
-## Building
-
-To build the project run:
-
+Install dependencies:
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Create a .env file based on the .env.example and configure the necessary environment variables.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+Run the development server:
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+## Environment Configuration
+Here is a template for the environment variables to be set.
 
-For end-to-end (e2e) testing, run:
-
+**rkiveai-client**
 ```bash
-ng e2e
+//environment.ts
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:5005/api'
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**rkiveai-server**
+```bash
+//.env
+PORT=5005
+ORIGIN=http://localhost:4200
+OPENAI_API_KEY=your_key
 
-## Additional Resources
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<hr/>
+
+## Assumptions and Limitations
+- API Availability: The application assumes that the backend API is available and running at the specified URL.
+- OpenAI API Quota: The sentiment analysis feature relies on the OpenAI API, which has usage limits. Exceeding the quota will result in a random value.
+
+## Suggestions for Future Improvements
+
+- User Authentication: Add user authentication to allow personalized settings and preferences.
+- UI Enhancements: Improve the UI/UX with better styling and responsive design.
+- Testing: Add unit and integration tests to improve code reliability and maintainability.
